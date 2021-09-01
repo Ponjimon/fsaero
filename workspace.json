@@ -1,0 +1,221 @@
+{
+  "version": 2,
+  "projects": {
+    "fsaero": {
+      "root": "apps/fsaero",
+      "sourceRoot": "apps/fsaero/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/fsaero",
+            "main": "apps/fsaero/src/main.ts",
+            "tsConfig": "apps/fsaero/tsconfig.app.json",
+            "assets": ["apps/fsaero/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/fsaero/src/environments/environment.ts",
+                  "with": "apps/fsaero/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "fsaero:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/fsaero/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/fsaero"],
+          "options": {
+            "jestConfig": "apps/fsaero/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "fsaero-ui": {
+      "root": "libs/fsaero-ui",
+      "sourceRoot": "libs/fsaero-ui/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/fsaero-ui",
+            "tsConfig": "libs/fsaero-ui/tsconfig.lib.json",
+            "project": "libs/fsaero-ui/package.json",
+            "entryFile": "libs/fsaero-ui/src/index.ts",
+            "external": ["react/jsx-runtime"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/fsaero-ui/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/fsaero-ui/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/fsaero-ui"],
+          "options": {
+            "jestConfig": "libs/fsaero-ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "fsairlines-gql": {
+      "root": "libs/fsairlines-gql",
+      "sourceRoot": "libs/fsairlines-gql/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/fsairlines-gql",
+            "tsConfig": "libs/fsairlines-gql/tsconfig.lib.json",
+            "packageJson": "libs/fsairlines-gql/package.json",
+            "main": "libs/fsairlines-gql/src/index.ts",
+            "assets": ["libs/fsairlines-gql/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/fsairlines-gql/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/fsairlines-gql"],
+          "options": {
+            "jestConfig": "libs/fsairlines-gql/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ui": {
+      "root": "apps/ui",
+      "sourceRoot": "apps/ui",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/next:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "root": "apps/ui",
+            "outputPath": "dist/apps/ui"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "ui:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "ui:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "executor": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "ui:build:production"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/ui"],
+          "options": {
+            "jestConfig": "apps/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/ui/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    },
+    "ui-e2e": {
+      "root": "apps/ui-e2e",
+      "sourceRoot": "apps/ui-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ui-e2e/cypress.json",
+            "devServerTarget": "ui:serve",
+            "tsConfig": "apps/ui-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ui:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/ui-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/nest"
+  },
+  "defaultProject": "fsaero",
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
+    }
+  }
+}
