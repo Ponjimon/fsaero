@@ -1,4 +1,7 @@
 {
   "name": "@ponjimon/fsairlines-gql",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "discord.js": "^13.1.0"
+  }
 }
