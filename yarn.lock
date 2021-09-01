@@ -3600,6 +3600,9 @@ __metadata:
     "@emotion/react": ^11
     "@emotion/styled": ^11
     framer-motion: ^4
+    node-fetch: ^3.0.0
+    react-hook-form: ^7.14.2
+    use-http: ^1.0.24
   languageName: unknown
   linkType: soft
 
@@ -7550,7 +7553,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"data-uri-to-buffer@npm:3.0.1":
+"data-uri-to-buffer@npm:3.0.1, data-uri-to-buffer@npm:^3.0.1":
   version: 3.0.1
   resolution: "data-uri-to-buffer@npm:3.0.1"
   checksum: c59c3009686a78c071806b72f4810856ec28222f0f4e252aa495ec027ed9732298ceea99c50328cf59b151dd34cbc3ad6150bbb43e41fc56fa19f48c99e9fc30
@@ -9075,6 +9078,15 @@ __metadata:
   dependencies:
     pend: ~1.2.0
   checksum: c8585fd5713f4476eb8261150900d2cb7f6ff2d87f8feb306ccc8a1122efd152f1783bdb2b8dc891395744583436bfd8081d8e63ece0ec8687eeefea394d4ff2
+  languageName: node
+  linkType: hard
+
+"fetch-blob@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "fetch-blob@npm:3.1.2"
+  dependencies:
+    web-streams-polyfill: ^3.0.3
+  checksum: 3e3717cf30da9f204aee83dded63f1a9f9c8bda7a0dc59648f89eeb1e88ee592231f4d922e1f119e1390383520768594dd3a1fe5e844f2f2f014d17ce04213a5
   languageName: node
   linkType: hard
 
@@ -13057,6 +13069,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"node-fetch@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "node-fetch@npm:3.0.0"
+  dependencies:
+    data-uri-to-buffer: ^3.0.1
+    fetch-blob: ^3.1.2
+  checksum: 50224bf682a0bc3d44faee0f38df6269d8ae646de343595ef37f9d94b4322d3763a49819fb7b2df9330fcae16e0a20e5fb129dfed8725cf0e8f720277db7611c
+  languageName: node
+  linkType: hard
+
 "node-forge@npm:^0.10.0":
   version: 0.10.0
   resolution: "node-forge@npm:0.10.0"
@@ -15209,6 +15231,15 @@ fsevents@^1.2.7:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
   checksum: 4a86e44cb46dc54caef485f476f4462dedffad7cdb7f80c1ae5e5127311ea3b166366481b664bf732fe893f31c647cb6267ad833bd58f046062235383747ee2b
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.14.2":
+  version: 7.14.2
+  resolution: "react-hook-form@npm:7.14.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17
+  checksum: 47954d656799d51bd552674c75a7b8472bb71c93f350a10c913408580bd2dc8f6405270d869fb4423bdcdc4f548a3158864a86cde1327249844954ca3467d7d0
   languageName: node
   linkType: hard
 
@@ -18110,6 +18141,16 @@ typescript@~4.4.2:
   languageName: node
   linkType: hard
 
+"urs@npm:^0.0.8":
+  version: 0.0.8
+  resolution: "urs@npm:0.0.8"
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.0
+    react-dom: ^16.13.1 || ^17.0.0
+  checksum: ab36ebdc648ca29f2fbbd40ebb300d5b750b1d4e0b4c7855b21ad630e6724f5a419f49976f5f06685ab20ca052e75137119bfed58dc23187e4bbb5ae1369f8c5
+  languageName: node
+  linkType: hard
+
 "use-callback-ref@npm:^1.2.1, use-callback-ref@npm:^1.2.3":
   version: 1.2.5
   resolution: "use-callback-ref@npm:1.2.5"
@@ -18123,6 +18164,20 @@ typescript@~4.4.2:
   languageName: node
   linkType: hard
 
+"use-http@npm:^1.0.24":
+  version: 1.0.24
+  resolution: "use-http@npm:1.0.24"
+  dependencies:
+    urs: ^0.0.8
+    use-ssr: ^1.0.24
+    utility-types: ^3.10.0
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.0
+    react-dom: ^16.13.1 || ^17.0.0
+  checksum: 2c7f437ac619a2b1c03c65a263085c26eba9c429584c8557fdd83a23733667e5d2b6290745677a261caceaf529ec588e90848ebc976e7d18decc8940507ddd5b
+  languageName: node
+  linkType: hard
+
 "use-sidecar@npm:^1.0.1":
   version: 1.0.5
   resolution: "use-sidecar@npm:1.0.5"
@@ -18132,6 +18187,16 @@ typescript@~4.4.2:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
   checksum: 9207ad8af787f4005b55813dd34ab392c06c5c86971182068f74f4aca5781c067085813167d438d460a84289d67dc915d04f2309dfc016172423c65bfd22bb3e
+  languageName: node
+  linkType: hard
+
+"use-ssr@npm:^1.0.24":
+  version: 1.0.24
+  resolution: "use-ssr@npm:1.0.24"
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.0
+    react-dom: ^16.13.1 || ^17.0.0
+  checksum: 527c41649e2c7b98ad9e0cc2fea957cd98c6e55ec13000fed7dd68d44f23e07a6ab2b0ee543f69230efdccb61c5b066f0eeff4036b82b521621992d30e2bc012
   languageName: node
   linkType: hard
 
@@ -18215,6 +18280,13 @@ typescript@~4.4.2:
     safe-buffer: ^5.1.2
     which-typed-array: ^1.1.2
   checksum: 8eac7a6e6b341c0f1b3eb73bbe5dfcae31a7e9699c8fc3266789f3e95f7637946a7700dcf1904dbd3749a58a36760ebf7acf4bb5b717f7468532a8a79f44eff0
+  languageName: node
+  linkType: hard
+
+"utility-types@npm:^3.10.0":
+  version: 3.10.0
+  resolution: "utility-types@npm:3.10.0"
+  checksum: 8f274415c6196ab62883b8bd98c9d2f8829b58016e4269aaa1ebd84184ac5dda7dc2ca45800c0d5e0e0650966ba063bf9a412aaeaea6850ca4440a391283d5c8
   languageName: node
   linkType: hard
 
@@ -18399,6 +18471,13 @@ typescript@~4.4.2:
   dependencies:
     defaults: ^1.0.3
   checksum: 814e9d1ddcc9798f7377ffa448a5a3892232b9275ebb30a41b529607691c0491de47cba426e917a4d08ded3ee7e9ba2f3fe32e62ee3cd9c7d3bafb7754bd553c
+  languageName: node
+  linkType: hard
+
+"web-streams-polyfill@npm:^3.0.3":
+  version: 3.1.0
+  resolution: "web-streams-polyfill@npm:3.1.0"
+  checksum: 50922239b5a85b6a686dcecb3603bd77d53a7489c1c542e3025537409e01b5a6b2a03f37c95c42296f5585a41ee1b7d6474eea56c1a3c6e682d8ef46a55b4a17
   languageName: node
   linkType: hard
 
