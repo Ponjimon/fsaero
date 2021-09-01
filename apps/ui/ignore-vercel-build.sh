@@ -4,6 +4,7 @@ APP=ui
 NX_VERSION=$(node -e "console.log(require('./package.json').devDependencies['@nrwl/workspace'])")
 
 # Install @nrwl/workspace in order to run the affected command
+yarn --version
 yarn add --dev @nrwl/workspace@$NX_VERSION --prefer-offline
 
 # Run the affected command, comparing latest commit to the one before that
