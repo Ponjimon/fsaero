@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ponjimon/fsaero-ui": ["libs/fsaero-ui/src/index.ts"],
       "@ponjimon/fsairlines-gql": ["libs/fsairlines-gql/src/index.ts"]
     }
   },

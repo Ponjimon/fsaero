@@ -38,3 +38,12 @@ testem.log
 .DS_Store
 Thumbs.db
 *.env
+
+# yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*

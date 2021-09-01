@@ -51,46 +51,6 @@
         }
       }
     },
-    "fsaero-ui": {
-      "root": "libs/fsaero-ui",
-      "sourceRoot": "libs/fsaero-ui/src",
-      "projectType": "library",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/fsaero-ui",
-            "tsConfig": "libs/fsaero-ui/tsconfig.lib.json",
-            "project": "libs/fsaero-ui/package.json",
-            "entryFile": "libs/fsaero-ui/src/index.ts",
-            "external": ["react/jsx-runtime"],
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-            "assets": [
-              {
-                "glob": "libs/fsaero-ui/README.md",
-                "input": ".",
-                "output": "."
-              }
-            ]
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/fsaero-ui/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/fsaero-ui"],
-          "options": {
-            "jestConfig": "libs/fsaero-ui/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "fsairlines-gql": {
       "root": "libs/fsairlines-gql",
       "sourceRoot": "libs/fsairlines-gql/src",
