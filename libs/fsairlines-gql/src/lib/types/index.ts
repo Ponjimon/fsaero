@@ -26,6 +26,7 @@ import { Airline } from './airline-data';
 
 export * from './aircraft-data';
 export * from './airline-data';
+export * from './graphql-context';
 
 export interface FSAirlinesAPI {
   getAircraftData: [GetAircraftDataArgs, AircraftData[]];

@@ -1,11 +1,11 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { GqlModuleOptions, GraphQLModule } from '@nestjs/graphql';
-import { AircraftDataResolver } from './resolvers';
 import { FSAirlinesService } from './services';
 import { Request } from 'express';
 import { DateTimeScalar } from '@fsaero/core';
-import { AirlineResolver } from './resolvers/airline.resolver';
+import { AircraftResolver } from './resolvers/aircraft.resolver';
+import { AirlineResolver } from './resolvers';
 
 @Module({
   imports: [
@@ -26,9 +26,9 @@ import { AirlineResolver } from './resolvers/airline.resolver';
     }),
   ],
   providers: [
-    AircraftDataResolver,
+    AircraftResolver,
     AirlineResolver,
-    DateTimeScalar,
+    // DateTimeScalar,
     FSAirlinesService,
   ],
   exports: [FSAirlinesService],

@@ -1,5 +1,6 @@
 import {
   Args,
+  Context,
   Int,
   Parent,
   Query,
@@ -7,15 +8,19 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { FSAirlinesService } from '../services';
-import { Aircraft, Airline } from '../types';
+import { Aircraft, Airline, GraphQLContext } from '../types';
 
 @Resolver(Airline)
 export class AirlineResolver {
   constructor(private readonly fsAirlinesService: FSAirlinesService) {}
 
   @Query(() => Airline)
-  airline(@Args('va_id', { type: () => Int }) va_id: number) {
-    return this.fsAirlinesService.getAirlineData(va_id);
+  airline(
+    @Args('id', { type: () => Int }) vaId: number,
+    @Context() ctx: GraphQLContext
+  ) {
+    ctx.vaId = vaId;
+    return this.fsAirlinesService.getAirlineData(vaId);
   }
 
   @ResolveField(() => [Aircraft])

@@ -1,4 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { AircraftStats } from './aircraft-stats.type';
 
 @ObjectType()
 export class Aircraft {
@@ -37,4 +38,7 @@ export class Aircraft {
 
   @Field(() => Int)
   last_maintenance: number;
+
+  @Field(() => AircraftStats)
+  stats: AircraftStats;
 }
