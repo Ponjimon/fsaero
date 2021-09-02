@@ -1,5 +1,5 @@
 {
-  "npmScope": "@ponjimon/fsaero",
+  "npmScope": "fsaero",
   "affected": {
     "defaultBase": "main"
   },
@@ -14,7 +14,12 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -27,6 +32,9 @@
     ]
   },
   "projects": {
+    "api": {
+      "tags": []
+    },
     "fsaero": {
       "tags": []
     },
@@ -38,7 +46,9 @@
     },
     "ui-e2e": {
       "tags": [],
-      "implicitDependencies": ["ui"]
+      "implicitDependencies": [
+        "ui"
+      ]
     }
   }
 }

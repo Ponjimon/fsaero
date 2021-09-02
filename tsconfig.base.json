@@ -10,13 +10,27 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ponjimon/fsairlines-gql": ["libs/fsairlines-gql/src/index.ts"]
+      "@fsaero/foo": [
+        "libs/foo/src/index.ts"
+      ],
+      "@fsaero/fsairlines-gql": [
+        "libs/fsairlines-gql/src/index.ts"
+      ],
+      "@fsaero/test": [
+        "libs/test/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
