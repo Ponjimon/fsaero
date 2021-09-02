@@ -18,14 +18,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@fsaero/foo": [
-        "libs/foo/src/index.ts"
-      ],
       "@fsaero/fsairlines-gql": [
         "libs/fsairlines-gql/src/index.ts"
-      ],
-      "@fsaero/test": [
-        "libs/test/src/index.ts"
       ]
     }
   },
