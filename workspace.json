@@ -8,16 +8,12 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ]
+            "assets": ["apps/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -42,16 +38,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/api/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/api/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/api"
-          ],
+          "outputs": ["coverage/apps/api"],
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
@@ -66,16 +58,12 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/fsaero",
             "main": "apps/fsaero/src/main.ts",
             "tsConfig": "apps/fsaero/tsconfig.app.json",
-            "assets": [
-              "apps/fsaero/src/assets"
-            ]
+            "assets": ["apps/fsaero/src/assets"]
           },
           "configurations": {
             "production": {
@@ -100,16 +88,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/fsaero/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/fsaero/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/fsaero"
-          ],
+          "outputs": ["coverage/apps/fsaero"],
           "options": {
             "jestConfig": "apps/fsaero/jest.config.js",
             "passWithNoTests": true
@@ -124,32 +108,24 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/libs/fsairlines-gql",
             "tsConfig": "libs/fsairlines-gql/tsconfig.lib.json",
             "packageJson": "libs/fsairlines-gql/package.json",
             "main": "libs/fsairlines-gql/src/index.ts",
-            "assets": [
-              "libs/fsairlines-gql/*.md"
-            ]
+            "assets": ["libs/fsairlines-gql/*.md"]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/fsairlines-gql/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/fsairlines-gql/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/fsairlines-gql"
-          ],
+          "outputs": ["coverage/libs/fsairlines-gql"],
           "options": {
             "jestConfig": "libs/fsairlines-gql/jest.config.js",
             "passWithNoTests": true
@@ -164,9 +140,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "root": "apps/ui",
             "outputPath": "dist/apps/ui"
@@ -196,9 +170,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/ui"
-          ],
+          "outputs": ["coverage/apps/ui"],
           "options": {
             "jestConfig": "apps/ui/jest.config.js",
             "passWithNoTests": true
@@ -207,9 +179,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/ui/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/ui/**/*.{ts,tsx,js,jsx}"]
           }
         }
       }
@@ -235,9 +205,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/ui-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/ui-e2e/**/*.{js,ts}"]
           }
         }
       }
