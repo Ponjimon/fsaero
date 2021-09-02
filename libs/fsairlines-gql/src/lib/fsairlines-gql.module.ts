@@ -17,6 +17,7 @@ import { AirlineResolver } from './resolvers';
         playground: true,
         autoSchemaFile: true,
         sortSchema: true,
+        introspection: true,
         context: ({ req }: { req: Request }) => {
           const apiKey = req.headers['x-fsairlines-apikey'];
 
