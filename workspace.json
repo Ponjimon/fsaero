@@ -127,17 +127,6 @@
       "sourceRoot": "libs/fsairlines-gql/src",
       "projectType": "library",
       "targets": {
-        "build": {
-          "executor": "@nrwl/node:package",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/fsairlines-gql",
-            "tsConfig": "libs/fsairlines-gql/tsconfig.lib.json",
-            "packageJson": "libs/fsairlines-gql/package.json",
-            "main": "libs/fsairlines-gql/src/index.ts",
-            "assets": ["libs/fsairlines-gql/*.md"]
-          }
-        },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
