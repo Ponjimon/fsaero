@@ -1,1 +1,1 @@
-export * from './fsairlines.resolver';
+export * from './aircraft-data.resolver';
