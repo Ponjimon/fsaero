@@ -17,65 +17,79 @@ import {
   PeriodFleetStats,
 } from '../types';
 
+const mapUnwrap = <T>(observable: Observable<T[]>) =>
+  map<T[], T | null>(arr => {
+    if (!Array.isArray(arr)) {
+      return null;
+    }
+    return arr[0];
+  })(observable);
+
 @Injectable()
 export class FSAirlinesService {
   private readonly logger = new Logger(FSAirlinesService.name);
 
   constructor(private readonly http: HttpService) {}
 
-  getAircraftData(va_id: number, ac_id: number): Observable<AircraftData> {
+  getAircraftData(
+    va_id: number,
+    ac_id: number
+  ): Observable<AircraftData | null> {
     return this.fetchFSAirlines('getAircraftData', {
       va_id,
       ac_id,
-    }).pipe(map(([data]) => data));
+    }).pipe(mapUnwrap);
   }
 
   getAircraftDBData(
     va_id: number,
     acdb_id: number
-  ): Observable<AircraftDBData> {
+  ): Observable<AircraftDBData | null> {
     return this.fetchFSAirlines('getAircraftDBData', {
       va_id,
       acdb_id,
-    }).pipe(map(([data]) => data));
+    }).pipe(mapUnwrap);
   }
 
-  getAircraftDBList(va_id: number): Observable<AircraftDBListItem[]> {
+  getAircraftDBList(va_id: number): Observable<AircraftDBListItem[] | null> {
     return this.fetchFSAirlines('getAircraftDBList', {
       va_id,
-    }).pipe(map(data => Object.values(data)));
+    }).pipe(map(data => (data ? Object.values(data) : null)));
   }
 
-  getAircraftList(va_id: number): Observable<Aircraft[]> {
+  getAircraftList(va_id: number): Observable<Aircraft[] | null> {
     return this.fetchFSAirlines('getAircraftList', { va_id });
   }
 
-  getAircraftStats(va_id: number, ac_id: number): Observable<AircraftStats> {
+  getAircraftStats(
+    va_id: number,
+    ac_id: number
+  ): Observable<AircraftStats | null> {
     return this.fetchFSAirlines('getAircraftStats', {
       va_id,
       ac_id,
-    }).pipe(map(([data]) => data));
+    }).pipe(mapUnwrap);
   }
 
   getFleetAircraftList(
     va_id: number,
     fleet_id: number
-  ): Observable<Aircraft[]> {
+  ): Observable<Aircraft[] | null> {
     return this.fetchFSAirlines('getFleetAircraftList', {
       va_id,
       fleet_id,
     });
   }
 
-  getFleetList(va_id: number): Observable<Fleet[]> {
+  getFleetList(va_id: number): Observable<Fleet[] | null> {
     return this.fetchFSAirlines('getFleetList', { va_id });
   }
 
-  getFleetStats(va_id: number): Observable<FleetStats[]> {
+  getFleetStats(va_id: number): Observable<FleetStats[] | null> {
     return this.fetchFSAirlines('getFleetStats', { va_id });
   }
 
-  getLeasedAircraftList(va_id: number): Observable<LeasedAircraft[]> {
+  getLeasedAircraftList(va_id: number): Observable<LeasedAircraft[] | null> {
     return this.fetchFSAirlines('getLeasedAircraftList', {
       va_id,
     });
@@ -85,7 +99,7 @@ export class FSAirlinesService {
     va_id: number,
     from_ts: Date,
     to_ts = new Date()
-  ): Observable<PeriodFleetStats[]> {
+  ): Observable<PeriodFleetStats[] | null> {
     return this.fetchFSAirlines('getPeriodFleetStats', {
       va_id,
       from_ts,
@@ -93,23 +107,21 @@ export class FSAirlinesService {
     });
   }
 
-  getAirportData(va_id: number, icao: string): Observable<Airport> {
+  getAirportData(va_id: number, icao: string): Observable<Airport | null> {
     return this.fetchFSAirlines('getAirportData', {
       va_id,
       icao,
-    }).pipe(map(([data]) => data));
+    }).pipe(mapUnwrap);
   }
 
-  getAirlineData(va_id: number): Observable<Airline> {
-    return this.fetchFSAirlines('getAirlineData', { va_id }).pipe(
-      map(([data]) => data)
-    );
+  getAirlineData(va_id: number): Observable<Airline | null> {
+    return this.fetchFSAirlines('getAirlineData', { va_id }).pipe(mapUnwrap);
   }
 
   private fetchFSAirlines<
     E extends keyof FSAirlinesAPI,
     P extends FSAirlinesAPI[E]
-  >(endpoint: E, parameters: P[0]) {
+  >(endpoint: E, parameters: P[0]): Observable<P[1] | null> {
     this.logger.log('Fetching FSAirlines API...');
     const queryParameters = Object.entries(parameters || {})
       .map(([key, value]) => ({ [key]: this.convertToString(value) }))
@@ -122,7 +134,8 @@ export class FSAirlinesService {
       map(({ data: requestData }) => {
         const { status, data } = requestData;
 
-        if (status !== 'SUCCESS') {
+        if (status !== 'SUCCESS' && status !== 'NOT FOUND') {
+          // Not finding a resource should not be considered an error because GraphQL will return null
           throw new Error(status);
         }
 

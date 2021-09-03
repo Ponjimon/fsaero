@@ -15,7 +15,7 @@ import { Airport, GraphQLContext } from '../types';
 export class AirportResolver {
   constructor(private readonly fsAirlinesService: FSAirlinesService) {}
 
-  @Query(() => Airport)
+  @Query(() => Airport, { nullable: true })
   airport(
     @Args() { va_id: vaId, icao }: GetAirportDataArgs,
     @Context() ctx: GraphQLContext

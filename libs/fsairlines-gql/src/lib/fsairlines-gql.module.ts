@@ -16,7 +16,7 @@ import {
     GraphQLModule.forRootAsync({
       useFactory: (): GqlModuleOptions => ({
         path: '/',
-        debug: false,
+        debug: process.env.NODE_ENV !== 'production',
         playground: true,
         autoSchemaFile: true,
         sortSchema: true,

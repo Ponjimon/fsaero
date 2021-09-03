@@ -14,7 +14,7 @@ import { Aircraft, Airline, GraphQLContext } from '../types';
 export class AirlineResolver {
   constructor(private readonly fsAirlinesService: FSAirlinesService) {}
 
-  @Query(() => Airline)
+  @Query(() => Airline, { nullable: true })
   airline(
     @Args('id', { type: () => Int }) vaId: number,
     @Context() ctx: GraphQLContext
