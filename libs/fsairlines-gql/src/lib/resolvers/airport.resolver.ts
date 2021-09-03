@@ -2,8 +2,6 @@ import { convertLatToGPS, convertLonToGPS } from '@fsaero/core';
 import {
   Args,
   Context,
-  Float,
-  ID,
   Int,
   Parent,
   Query,
