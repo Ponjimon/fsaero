@@ -6,8 +6,11 @@ import { Aircraft, AircraftStats, GraphQLContext } from '../types';
 export class AircraftResolver {
   constructor(private readonly fsAirlinesService: FSAirlinesService) {}
 
-  @ResolveField(() => AircraftStats)
+  @ResolveField(() => AircraftStats, { nullable: true })
   stats(@Parent() aircraft: Aircraft, @Context() { vaId }: GraphQLContext) {
+    if (!vaId) {
+      return null;
+    }
     return this.fsAirlinesService.getAircraftStats(vaId, aircraft.id);
   }
 }
