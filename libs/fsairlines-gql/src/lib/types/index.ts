@@ -6,6 +6,7 @@ import {
   GetAircraftStatsArgs,
   GetAirlineDataArgs,
   GetAirportDataArgs,
+  GetAirportListArgs,
   GetFleetAircraftListArgs,
   GetFleetListArgs,
   GetFleetStatsArgs,
@@ -31,6 +32,10 @@ export * from './airline-data';
 export * from './airport-data';
 export * from './graphql-context';
 
+export type BaseAirport = Pick<
+  Airport,
+  'icao' | 'name' | 'city' | 'country' | 'fuel' | 'lat' | 'lon'
+>;
 export interface FSAirlinesAPI {
   getAircraftData: [GetAircraftDataArgs, AircraftData[]];
   getAircraftDBData: [GetAircraftDBDataArgs, AircraftDBData[]];
@@ -47,6 +52,7 @@ export interface FSAirlinesAPI {
   getPeriodFleetStats: [GetPeriodFleetStatsArgs, PeriodFleetStats[]];
 
   getAirportData: [GetAirportDataArgs, Airport[]];
+  getAirportList: [GetAirportListArgs, BaseAirport[]];
 
   getAirlineData: [GetAirlineDataArgs, Airline[]];
 }

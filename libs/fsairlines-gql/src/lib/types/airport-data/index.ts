@@ -1,1 +1,1 @@
-export * from './airport-data.type';
+export * from './airport.type';

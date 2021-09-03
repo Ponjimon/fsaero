@@ -2,6 +2,7 @@ import { convertLatToGPS, convertLonToGPS } from '@fsaero/core';
 import {
   Args,
   Context,
+  ID,
   Parent,
   Query,
   ResolveField,
@@ -26,7 +27,6 @@ export class AirportResolver {
 
   @ResolveField(() => String)
   lat_gps(@Parent() airport: Airport) {
-    console.log(convertLatToGPS(52.5200066));
     return convertLatToGPS(airport.lat);
   }
 
