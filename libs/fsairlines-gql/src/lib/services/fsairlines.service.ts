@@ -8,6 +8,7 @@ import {
   AircraftDBListItem,
   AircraftStats,
   Airline,
+  Airport,
   Fleet,
   FleetStats,
   FSAirlinesAPI,
@@ -90,6 +91,13 @@ export class FSAirlinesService {
       from_ts,
       to_ts,
     });
+  }
+
+  getAirportData(va_id: number, icao: string): Observable<Airport> {
+    return this.fetchFSAirlines('getAirportData', {
+      va_id,
+      icao,
+    }).pipe(map(([data]) => data));
   }
 
   getAirlineData(va_id: number): Observable<Airline> {

@@ -5,6 +5,7 @@ import {
   GetAircraftListArgs,
   GetAircraftStatsArgs,
   GetAirlineDataArgs,
+  GetAirportDataArgs,
   GetFleetAircraftListArgs,
   GetFleetListArgs,
   GetFleetStatsArgs,
@@ -23,9 +24,11 @@ import {
   PeriodFleetStats,
 } from './aircraft-data';
 import { Airline } from './airline-data';
+import { Airport } from './airport-data';
 
 export * from './aircraft-data';
 export * from './airline-data';
+export * from './airport-data';
 export * from './graphql-context';
 
 export interface FSAirlinesAPI {
@@ -42,6 +45,8 @@ export interface FSAirlinesAPI {
   getFleetStats: [GetFleetStatsArgs, FleetStats[]];
   getLeasedAircraftList: [GetLeasedAircraftListArgs, LeasedAircraft[]];
   getPeriodFleetStats: [GetPeriodFleetStatsArgs, PeriodFleetStats[]];
+
+  getAirportData: [GetAirportDataArgs, Airport[]];
 
   getAirlineData: [GetAirlineDataArgs, Airline[]];
 }

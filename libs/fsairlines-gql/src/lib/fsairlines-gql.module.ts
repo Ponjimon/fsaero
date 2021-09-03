@@ -4,8 +4,11 @@ import { GqlModuleOptions, GraphQLModule } from '@nestjs/graphql';
 import { FSAirlinesService } from './services';
 import { Request } from 'express';
 import { DateTimeScalar } from '@fsaero/core';
-import { AircraftResolver } from './resolvers/aircraft.resolver';
-import { AirlineResolver } from './resolvers';
+import {
+  AircraftResolver,
+  AirlineResolver,
+  AirportResolver,
+} from './resolvers';
 
 @Module({
   imports: [
@@ -29,6 +32,7 @@ import { AirlineResolver } from './resolvers';
   providers: [
     AircraftResolver,
     AirlineResolver,
+    AirportResolver,
     // DateTimeScalar,
     FSAirlinesService,
   ],
