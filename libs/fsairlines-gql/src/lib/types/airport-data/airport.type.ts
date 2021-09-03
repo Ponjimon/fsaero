@@ -36,8 +36,7 @@ export class Airport {
   })
   lon_gps: string;
 
-  @Field(() => String, { description: 'The altitude of the airport.' })
-  altitude: string;
+  altitude: number;
 
   @Field(() => String, { description: 'Unknown. Help wanted!' })
   length: string;

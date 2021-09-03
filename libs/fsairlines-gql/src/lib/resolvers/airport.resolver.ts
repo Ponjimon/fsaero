@@ -2,13 +2,16 @@ import { convertLatToGPS, convertLonToGPS } from '@fsaero/core';
 import {
   Args,
   Context,
+  Float,
   ID,
+  Int,
   Parent,
   Query,
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { GetAirportDataArgs } from '../dto';
+import { GetAirportDataArgs, LengthUnitArgs } from '../dto';
+import { LENGTH_UNIT } from '../enums';
 import { FSAirlinesService } from '../services';
 import { Airport, GraphQLContext } from '../types';
 
@@ -33,5 +36,16 @@ export class AirportResolver {
   @ResolveField(() => String)
   lon_gps(@Parent() airport: Airport) {
     return convertLonToGPS(airport.lon);
+  }
+
+  @ResolveField(() => Int)
+  altitude(@Parent() airport: Airport, @Args() { unit }: LengthUnitArgs) {
+    switch (unit) {
+      case LENGTH_UNIT.METERS:
+        return Math.floor(airport.altitude * 3.28084);
+      case LENGTH_UNIT.FEET:
+      default:
+        return airport.altitude;
+    }
   }
 }
