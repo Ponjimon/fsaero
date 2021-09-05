@@ -14,9 +14,9 @@ jobs:
           check-latest: true
 
       - name: Pull
-          run: npx graphcdn pull --service fsaero
-          env:
-          GRAPHCDN_TOKEN: ${{ secrets.GRAPHCDN_TOKEN }}
+        run: npx graphcdn pull --service fsaero
+        env:
+            GRAPHCDN_TOKEN: ${{ secrets.GRAPHCDN_TOKEN }}
 
       - name: Push schema
         run: npx graphcdn push schema
