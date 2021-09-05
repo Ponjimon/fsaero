@@ -15,7 +15,7 @@ import {
     HttpModule,
     GraphQLModule.forRootAsync({
       useFactory: (): GqlModuleOptions => ({
-        path: '/',
+        path: '/graphql',
         debug: process.env.NODE_ENV !== 'production',
         playground: true,
         autoSchemaFile: true,
