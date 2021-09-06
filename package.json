@@ -23,6 +23,8 @@
     "core-js": "^3.6.5",
     "framer-motion": "^4.1.17",
     "graphql": "^15.5.2",
+    "graphql-relay": "^0.8.0",
+    "nestjs-relay": "^4.0.4",
     "next": "11.1.0",
     "node-fetch": "^3.0.0",
     "react": "17.0.2",

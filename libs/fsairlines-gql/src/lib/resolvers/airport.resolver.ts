@@ -8,22 +8,25 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
+import { GlobalIdFieldResolver } from 'nestjs-relay';
 import { GetAirportDataArgs, LengthUnitArgs } from '../dto';
 import { LENGTH_UNIT } from '../enums';
 import { FSAirlinesService } from '../services';
 import { Airport, GraphQLContext } from '../types';
 
 @Resolver(Airport)
-export class AirportResolver {
-  constructor(private readonly fsAirlinesService: FSAirlinesService) {}
+export class AirportResolver extends GlobalIdFieldResolver(Airport) {
+  constructor(private readonly fsAirlinesService: FSAirlinesService) {
+    super();
+  }
 
   @Query(() => Airport, { nullable: true })
   airport(
-    @Args() { va_id: vaId, icao }: GetAirportDataArgs,
+    @Args() { vaId: vaId, icao }: GetAirportDataArgs,
     @Context() ctx: GraphQLContext
   ) {
-    ctx.vaId = vaId;
-    return this.fsAirlinesService.getAirportData(vaId, icao);
+    ctx.vaId = vaId.toNumber();
+    return this.fsAirlinesService.getAirportData(vaId.toString(), icao);
   }
 
   @ResolveField(() => String)

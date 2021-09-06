@@ -160,7 +160,10 @@ export class FSAirlinesService {
   private fetchFSAirlines<
     E extends keyof FSAirlinesAPI,
     P extends FSAirlinesAPI[E]
-  >(endpoint: E, parameters: P[0]): Observable<P[1] | null> {
+  >(
+    endpoint: E,
+    parameters: Omit<P[0], 'vaId'> & { va_id: number }
+  ): Observable<P[1] | null> {
     this.logger.log('Fetching FSAirlines API...');
     const queryParameters = Object.entries(parameters || {})
       .map(([key, value]) => ({ [key]: this.convertToString(value) }))

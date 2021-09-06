@@ -1,10 +1,8 @@
-import { Field, Float, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Float, Int } from '@nestjs/graphql';
+import { NodeInterface, NodeType } from 'nestjs-relay';
 
-@ObjectType()
-export class Airport {
-  @Field(() => ID, { description: 'The ID of the airport in FSAirlines.' })
-  id: string;
-
+@NodeType()
+export class Airport extends NodeInterface {
   @Field(() => String, { description: 'The name of the airport.' })
   name: string;
 

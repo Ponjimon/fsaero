@@ -7,7 +7,9 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
+import { GlobalIdFieldResolver } from 'nestjs-relay';
 import { forkJoin, mergeMap, Observable, of } from 'rxjs';
+import { GetAirlineDataArgs } from '../dto';
 import { FSAirlinesService } from '../services';
 import {
   Aircraft,
@@ -18,26 +20,28 @@ import {
 } from '../types';
 
 @Resolver(Airline)
-export class AirlineResolver {
-  constructor(private readonly fsAirlinesService: FSAirlinesService) {}
+export class AirlineResolver extends GlobalIdFieldResolver(Airline) {
+  constructor(private readonly fsAirlinesService: FSAirlinesService) {
+    super();
+  }
 
   @Query(() => Airline, { nullable: true })
   airline(
-    @Args('id', { type: () => Int }) vaId: number,
+    @Args() { vaId: vaId }: GetAirlineDataArgs,
     @Context() ctx: GraphQLContext
   ) {
-    ctx.vaId = vaId;
-    return this.fsAirlinesService.getAirlineData(vaId);
+    ctx.vaId = vaId.toNumber();
+    return this.fsAirlinesService.getAirlineData(vaId.toString());
   }
 
   @ResolveField(() => [Aircraft])
   aircrafts(@Parent() airline: Airline) {
-    return this.fsAirlinesService.getAircraftList(airline.id);
+    return this.fsAirlinesService.getAircraftList(airline.id.toString());
   }
 
   @ResolveField(() => [Airport], { nullable: true })
   airports(@Parent() airline: Airline): Observable<Airport[] | null> {
-    return this.fsAirlinesService.getAirportList(airline.id).pipe(
+    return this.fsAirlinesService.getAirportList(airline.id.toString()).pipe(
       mergeMap(baseAirports => {
         if (!baseAirports) {
           return [];
@@ -49,7 +53,7 @@ export class AirlineResolver {
               baseAirports.map(
                 baseAirport =>
                   this.fsAirlinesService.getAirportData(
-                    airline.id,
+                    airline.id.toString(),
                     baseAirport.icao
                   ) as Observable<Airport>
               )
@@ -62,6 +66,6 @@ export class AirlineResolver {
 
   @ResolveField(() => AirlineStats)
   stats(@Parent() airline: Airline) {
-    return this.fsAirlinesService.getAirlineStats(airline.id);
+    return this.fsAirlinesService.getAirlineStats(airline.id.toString());
   }
 }

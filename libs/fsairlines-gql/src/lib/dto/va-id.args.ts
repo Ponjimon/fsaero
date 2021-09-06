@@ -1,7 +1,8 @@
-import { ArgsType, Field, Int } from '@nestjs/graphql';
+import { ArgsType, Field } from '@nestjs/graphql';
+import { ResolvedGlobalId } from 'nestjs-relay';
 
 @ArgsType()
 export class VaIDArgs {
-  @Field(() => Int)
-  va_id: number;
+  @Field(() => ResolvedGlobalId)
+  vaId: ResolvedGlobalId;
 }

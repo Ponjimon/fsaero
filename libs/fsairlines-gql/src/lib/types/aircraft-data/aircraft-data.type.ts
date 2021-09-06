@@ -1,10 +1,7 @@
-import { Field, Float, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class AircraftData {
-  @Field(() => ID)
-  id: string;
-
   @Field(() => Int)
   va_id: number;
 

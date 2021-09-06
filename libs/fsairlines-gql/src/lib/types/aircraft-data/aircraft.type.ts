@@ -1,11 +1,8 @@
-import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Int } from '@nestjs/graphql';
 import { AircraftStats } from './aircraft-stats.type';
-
-@ObjectType()
-export class Aircraft {
-  @Field(() => ID)
-  id: string;
-
+import { NodeInterface, NodeType } from 'nestjs-relay';
+@NodeType()
+export class Aircraft extends NodeInterface {
   @Field(() => Int)
   acdb_id: number;
 

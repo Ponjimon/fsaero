@@ -10,6 +10,7 @@ import {
   AirlineStatsResolver,
   AirportResolver,
 } from './resolvers';
+import { GlobalIdScalar } from 'nestjs-relay';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import {
     AirportResolver,
     DateTimeScalar,
     FSAirlinesService,
+    GlobalIdScalar,
   ],
   exports: [FSAirlinesService],
 })
