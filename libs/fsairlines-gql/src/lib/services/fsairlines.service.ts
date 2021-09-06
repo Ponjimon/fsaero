@@ -8,6 +8,7 @@ import {
   AircraftDBListItem,
   AircraftStats,
   Airline,
+  AirlineStats,
   Airport,
   BaseAirport,
   Fleet,
@@ -32,6 +33,7 @@ export class FSAirlinesService {
 
   constructor(private readonly http: HttpService) {}
 
+  // Aircraft Data
   getAircraftData(
     va_id: number,
     ac_id: number
@@ -108,6 +110,7 @@ export class FSAirlinesService {
     });
   }
 
+  // Airport Data
   getAirportData(va_id: number, icao: string): Observable<Airport | null> {
     return this.fetchFSAirlines('getAirportData', {
       va_id,
@@ -119,8 +122,13 @@ export class FSAirlinesService {
     return this.fetchFSAirlines('getAirportList', { va_id });
   }
 
+  // Airline Data
   getAirlineData(va_id: number): Observable<Airline | null> {
     return this.fetchFSAirlines('getAirlineData', { va_id }).pipe(mapUnwrap);
+  }
+
+  getAirlineStats(va_id: number): Observable<AirlineStats | null> {
+    return this.fetchFSAirlines('getAirlineStats', { va_id }).pipe(mapUnwrap);
   }
 
   private fetchFSAirlines<

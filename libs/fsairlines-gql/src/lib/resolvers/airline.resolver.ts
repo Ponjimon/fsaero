@@ -9,7 +9,13 @@ import {
 } from '@nestjs/graphql';
 import { forkJoin, from, mergeMap, Observable, of, reduce } from 'rxjs';
 import { FSAirlinesService } from '../services';
-import { Aircraft, Airline, Airport, GraphQLContext } from '../types';
+import {
+  Aircraft,
+  Airline,
+  AirlineStats,
+  Airport,
+  GraphQLContext,
+} from '../types';
 
 @Resolver(Airline)
 export class AirlineResolver {
@@ -52,5 +58,10 @@ export class AirlineResolver {
         );
       })
     );
+  }
+
+  @ResolveField(() => AirlineStats)
+  stats(@Parent() airline: Airline) {
+    return this.fsAirlinesService.getAirlineStats(airline.id);
   }
 }

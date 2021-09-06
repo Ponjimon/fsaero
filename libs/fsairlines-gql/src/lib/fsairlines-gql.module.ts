@@ -7,6 +7,7 @@ import { DateTimeScalar } from '@fsaero/core';
 import {
   AircraftResolver,
   AirlineResolver,
+  AirlineStatsResolver,
   AirportResolver,
 } from './resolvers';
 
@@ -32,8 +33,9 @@ import {
   providers: [
     AircraftResolver,
     AirlineResolver,
+    AirlineStatsResolver,
     AirportResolver,
-    // DateTimeScalar,
+    DateTimeScalar,
     FSAirlinesService,
   ],
   exports: [FSAirlinesService],

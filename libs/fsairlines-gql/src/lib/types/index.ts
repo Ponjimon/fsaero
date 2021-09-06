@@ -5,6 +5,7 @@ import {
   GetAircraftListArgs,
   GetAircraftStatsArgs,
   GetAirlineDataArgs,
+  GetAirlineStatsArgs,
   GetAirportDataArgs,
   GetAirportListArgs,
   GetFleetAircraftListArgs,
@@ -24,7 +25,7 @@ import {
   LeasedAircraft,
   PeriodFleetStats,
 } from './aircraft-data';
-import { Airline } from './airline-data';
+import { Airline, AirlineStats } from './airline-data';
 import { Airport } from './airport-data';
 
 export * from './aircraft-data';
@@ -37,6 +38,7 @@ export type BaseAirport = Pick<
   'icao' | 'name' | 'city' | 'country' | 'fuel' | 'lat' | 'lon'
 >;
 export interface FSAirlinesAPI {
+  // Aircraft Data
   getAircraftData: [GetAircraftDataArgs, AircraftData[]];
   getAircraftDBData: [GetAircraftDBDataArgs, AircraftDBData[]];
   getAircraftDBList: [
@@ -51,10 +53,13 @@ export interface FSAirlinesAPI {
   getLeasedAircraftList: [GetLeasedAircraftListArgs, LeasedAircraft[]];
   getPeriodFleetStats: [GetPeriodFleetStatsArgs, PeriodFleetStats[]];
 
+  // Airport Data
   getAirportData: [GetAirportDataArgs, Airport[]];
   getAirportList: [GetAirportListArgs, BaseAirport[]];
 
+  // Airline Data
   getAirlineData: [GetAirlineDataArgs, Airline[]];
+  getAirlineStats: [GetAirlineStatsArgs, AirlineStats[]];
 }
 
 export type FSAirlinesAPIResponseStatus =
