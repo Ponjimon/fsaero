@@ -36,7 +36,7 @@ export class AirlineStats {
   })
   cargo: number;
 
-  packages_kg: number;
+  packages_kg: string;
   @Field(() => Int, {
     description: 'The total weight of packages flown by the airline.',
   })

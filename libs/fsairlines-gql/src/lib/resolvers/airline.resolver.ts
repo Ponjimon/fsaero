@@ -7,7 +7,7 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { forkJoin, from, mergeMap, Observable, of, reduce } from 'rxjs';
+import { forkJoin, mergeMap, Observable, of } from 'rxjs';
 import { FSAirlinesService } from '../services';
 import {
   Aircraft,
