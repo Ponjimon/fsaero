@@ -1,10 +1,10 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 import { Aircraft } from '../aircraft-data';
 
 @ObjectType()
 export class Airline {
-  @Field(() => Int, { description: 'The ID of the airline.' })
-  id: number;
+  @Field(() => ID, { description: 'The ID of the airline.' })
+  id: string;
 
   @Field(() => String, { description: 'The name of the airline.' })
   name: string;

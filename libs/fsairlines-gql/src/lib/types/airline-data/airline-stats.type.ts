@@ -1,22 +1,4 @@
-import { Field, Float, ID, Int, ObjectType } from '@nestjs/graphql';
-
-const stats = {
-  status: 'SUCCESS',
-  data: [
-    {
-      id: 38129,
-      flights: 180,
-      rating: '17890',
-      hours: 360.19999922067,
-      distance: '119140',
-      last: 1630928408,
-      fuel_used: '1371722',
-      pax: '26984',
-      cargo_kg: '1038711',
-      packages_kg: '1396880',
-    },
-  ],
-};
+import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class AirlineStats {
