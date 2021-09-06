@@ -33,102 +33,128 @@ export class FSAirlinesService {
 
   constructor(private readonly http: HttpService) {}
 
+  private getIDAsNumber(id: number | string) {
+    if (typeof id === 'string') {
+      return parseInt(id, 10);
+    }
+    return id;
+  }
+
   // Aircraft Data
   getAircraftData(
     va_id: number,
     ac_id: number
   ): Observable<AircraftData | null> {
     return this.fetchFSAirlines('getAircraftData', {
-      va_id,
-      ac_id,
+      va_id: this.getIDAsNumber(va_id),
+      ac_id: this.getIDAsNumber(ac_id),
     }).pipe(mapUnwrap);
   }
 
   getAircraftDBData(
-    va_id: number,
-    acdb_id: number
+    va_id: number | string,
+    acdb_id: number | string
   ): Observable<AircraftDBData | null> {
     return this.fetchFSAirlines('getAircraftDBData', {
-      va_id,
-      acdb_id,
+      va_id: this.getIDAsNumber(va_id),
+      acdb_id: this.getIDAsNumber(acdb_id),
     }).pipe(mapUnwrap);
   }
 
-  getAircraftDBList(va_id: number): Observable<AircraftDBListItem[] | null> {
+  getAircraftDBList(
+    va_id: number | string
+  ): Observable<AircraftDBListItem[] | null> {
     return this.fetchFSAirlines('getAircraftDBList', {
-      va_id,
+      va_id: this.getIDAsNumber(va_id),
     }).pipe(map(data => (data ? Object.values(data) : null)));
   }
 
-  getAircraftList(va_id: number): Observable<Aircraft[] | null> {
-    return this.fetchFSAirlines('getAircraftList', { va_id });
+  getAircraftList(va_id: number | string): Observable<Aircraft[] | null> {
+    return this.fetchFSAirlines('getAircraftList', {
+      va_id: this.getIDAsNumber(va_id),
+    });
   }
 
   getAircraftStats(
-    va_id: number,
-    ac_id: number
+    va_id: number | string,
+    ac_id: number | string
   ): Observable<AircraftStats | null> {
     return this.fetchFSAirlines('getAircraftStats', {
-      va_id,
-      ac_id,
+      va_id: this.getIDAsNumber(va_id),
+      ac_id: this.getIDAsNumber(ac_id),
     }).pipe(mapUnwrap);
   }
 
   getFleetAircraftList(
-    va_id: number,
-    fleet_id: number
+    va_id: number | string,
+    fleet_id: number | string
   ): Observable<Aircraft[] | null> {
     return this.fetchFSAirlines('getFleetAircraftList', {
-      va_id,
-      fleet_id,
+      va_id: this.getIDAsNumber(va_id),
+      fleet_id: this.getIDAsNumber(fleet_id),
     });
   }
 
-  getFleetList(va_id: number): Observable<Fleet[] | null> {
-    return this.fetchFSAirlines('getFleetList', { va_id });
+  getFleetList(va_id: number | string): Observable<Fleet[] | null> {
+    return this.fetchFSAirlines('getFleetList', {
+      va_id: this.getIDAsNumber(va_id),
+    });
   }
 
-  getFleetStats(va_id: number): Observable<FleetStats[] | null> {
-    return this.fetchFSAirlines('getFleetStats', { va_id });
+  getFleetStats(va_id: number | string): Observable<FleetStats[] | null> {
+    return this.fetchFSAirlines('getFleetStats', {
+      va_id: this.getIDAsNumber(va_id),
+    });
   }
 
-  getLeasedAircraftList(va_id: number): Observable<LeasedAircraft[] | null> {
+  getLeasedAircraftList(
+    va_id: number | string
+  ): Observable<LeasedAircraft[] | null> {
     return this.fetchFSAirlines('getLeasedAircraftList', {
-      va_id,
+      va_id: this.getIDAsNumber(va_id),
     });
   }
 
   getPeriodFleetStats(
-    va_id: number,
+    va_id: number | string,
     from_ts: Date,
     to_ts = new Date()
   ): Observable<PeriodFleetStats[] | null> {
     return this.fetchFSAirlines('getPeriodFleetStats', {
-      va_id,
+      va_id: this.getIDAsNumber(va_id),
       from_ts,
       to_ts,
     });
   }
 
   // Airport Data
-  getAirportData(va_id: number, icao: string): Observable<Airport | null> {
+  getAirportData(
+    va_id: number | string,
+    icao: string
+  ): Observable<Airport | null> {
     return this.fetchFSAirlines('getAirportData', {
-      va_id,
+      va_id: this.getIDAsNumber(va_id),
       icao,
     }).pipe(mapUnwrap);
   }
 
-  getAirportList(va_id: number): Observable<BaseAirport[] | null> {
-    return this.fetchFSAirlines('getAirportList', { va_id });
+  getAirportList(va_id: number | string): Observable<BaseAirport[] | null> {
+    return this.fetchFSAirlines('getAirportList', {
+      va_id: this.getIDAsNumber(va_id),
+    });
   }
 
   // Airline Data
-  getAirlineData(va_id: number): Observable<Airline | null> {
-    return this.fetchFSAirlines('getAirlineData', { va_id }).pipe(mapUnwrap);
+  getAirlineData(va_id: number | string): Observable<Airline | null> {
+    return this.fetchFSAirlines('getAirlineData', {
+      va_id: this.getIDAsNumber(va_id),
+    }).pipe(mapUnwrap);
   }
 
-  getAirlineStats(va_id: number): Observable<AirlineStats | null> {
-    return this.fetchFSAirlines('getAirlineStats', { va_id }).pipe(mapUnwrap);
+  getAirlineStats(va_id: number | string): Observable<AirlineStats | null> {
+    return this.fetchFSAirlines('getAirlineStats', {
+      va_id: this.getIDAsNumber(va_id),
+    }).pipe(mapUnwrap);
   }
 
   private fetchFSAirlines<
