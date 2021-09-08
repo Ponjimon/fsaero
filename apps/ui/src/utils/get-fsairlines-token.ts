@@ -18,7 +18,7 @@ export const getFsAirlinesToken = async (
   vaId: string
 ) => {
   const url = `https://www.fsairlines.net/va_interface2.php?format=json&function=pilotLogin&${new URLSearchParams(
-    { va_id: vaId, apikey: process.env.FSAIRLINES_API_KEY }
+    { va_id: vaId, apikey: process.env.FSAIRLINES_API_KEY || '' }
   ).toString()}`;
   const response = await fetch(url, {
     method: 'POST',
@@ -34,18 +34,10 @@ export const getFsAirlinesToken = async (
   const res = (await response.json()) as FSAirlinesAPIResponse<{
     token: string;
   }>;
-  console.warn(
-    url,
-    new URLSearchParams({
-      user: username,
-      password,
-    }).toString(),
-    res
-  );
 
   if (res.status !== 'SUCCESS') {
     return null;
   }
 
-  return res.data.token;
+  return res.data?.token;
 };
