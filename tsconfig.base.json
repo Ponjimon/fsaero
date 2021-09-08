@@ -13,10 +13,12 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@ponjimon/fsaero-ui": ["libs/fsaero-ui/src/index.ts"],
-      "@ponjimon/fsairlines-gql": ["libs/fsairlines-gql/src/index.ts"]
+      "@fsaero/core": ["libs/core/src/index.ts"],
+      "@fsaero/fsairlines-gql": ["libs/fsairlines-gql/src/index.ts"],
+      "@fsaero/gql-relay": ["libs/gql-relay/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
