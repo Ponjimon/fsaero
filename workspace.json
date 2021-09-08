@@ -137,6 +137,27 @@
         }
       }
     },
+    "gql-relay": {
+      "root": "libs/gql-relay",
+      "sourceRoot": "libs/gql-relay/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/gql-relay/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/gql-relay"],
+          "options": {
+            "jestConfig": "libs/gql-relay/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "ui": {
       "root": "apps/ui",
       "sourceRoot": "apps/ui",

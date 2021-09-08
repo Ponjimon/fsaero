@@ -1,14 +1,17 @@
 import {
   Args,
   Context,
-  Int,
   Parent,
   Query,
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { GlobalIdFieldResolver } from 'nestjs-relay';
-import { forkJoin, mergeMap, Observable, of } from 'rxjs';
+import {
+  Connection,
+  GlobalIdFieldResolver,
+  ResolveConnectionField,
+} from 'nestjs-relay';
+import { forkJoin, map, mergeMap, Observable, of } from 'rxjs';
 import { GetAirlineDataArgs } from '../dto';
 import { FSAirlinesService } from '../services';
 import {
@@ -18,6 +21,8 @@ import {
   Airport,
   GraphQLContext,
 } from '../types';
+import { ForwardConnectionArgs } from '@fsaero/gql-relay';
+import { connectionFromArray } from 'graphql-relay';
 
 @Resolver(Airline)
 export class AirlineResolver extends GlobalIdFieldResolver(Airline) {
@@ -34,13 +39,26 @@ export class AirlineResolver extends GlobalIdFieldResolver(Airline) {
     return this.fsAirlinesService.getAirlineData(vaId.toString());
   }
 
-  @ResolveField(() => [Aircraft])
-  aircrafts(@Parent() airline: Airline) {
-    return this.fsAirlinesService.getAircraftList(airline.id.toString());
+  @ResolveConnectionField(() => Aircraft)
+  aircrafts(
+    @Parent() airline: Airline,
+    @Args() args: ForwardConnectionArgs
+  ): Observable<Connection<Aircraft>> {
+    return this.fsAirlinesService.getAircraftList(airline.id.toString()).pipe(
+      map(aircrafts => {
+        if (!aircrafts) {
+          return connectionFromArray([], args);
+        }
+        return connectionFromArray(aircrafts, args);
+      })
+    );
   }
 
-  @ResolveField(() => [Airport], { nullable: true })
-  airports(@Parent() airline: Airline): Observable<Airport[] | null> {
+  @ResolveConnectionField(() => Airport)
+  airports(
+    @Parent() airline: Airline,
+    @Args() args: ForwardConnectionArgs
+  ): Observable<Connection<Airport>> {
     return this.fsAirlinesService.getAirportList(airline.id.toString()).pipe(
       mergeMap(baseAirports => {
         if (!baseAirports) {
@@ -60,7 +78,8 @@ export class AirlineResolver extends GlobalIdFieldResolver(Airline) {
             )
           )
         );
-      })
+      }),
+      map(airports => connectionFromArray(airports, args))
     );
   }
 

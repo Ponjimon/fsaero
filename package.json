@@ -20,6 +20,7 @@
     "@nestjs/platform-express": "^8.0.6",
     "@nrwl/next": "^12.8.0",
     "apollo-server-express": "^3.3.0",
+    "class-validator": "^0.13.1",
     "core-js": "^3.6.5",
     "framer-motion": "^4.1.17",
     "graphql": "^15.5.2",

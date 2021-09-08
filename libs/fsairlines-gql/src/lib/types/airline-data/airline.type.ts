@@ -1,6 +1,7 @@
 import { Field, Int } from '@nestjs/graphql';
-import { NodeInterface, NodeType } from 'nestjs-relay';
+import { Connection, NodeInterface, NodeType } from 'nestjs-relay';
 import { Aircraft } from '../aircraft-data';
+import { Airport } from '../airport-data';
 
 @NodeType()
 export class Airline extends NodeInterface {
@@ -49,6 +50,7 @@ export class Airline extends NodeInterface {
   })
   mission: string | null;
 
-  @Field(() => [Aircraft], { description: 'The aircrafts of the airline.' })
-  aircrafts: Aircraft[];
+  aircrafts: Connection<Aircraft>;
+
+  airports: Connection<Airport>;
 }
