@@ -2,7 +2,7 @@ name: GraphhCDN
 on:
   push:
     branches:
-      - ui
+      - main
 jobs:
   main:
     runs-on: ubuntu-latest
