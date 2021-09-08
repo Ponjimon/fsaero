@@ -4,7 +4,8 @@ APP=ui
 NX_VERSION=$(node -e "console.log(require('./package.json').devDependencies['@nrwl/workspace'])")
 
 # Install @nrwl/workspace in order to run the affected command
-yarn add --dev @nrwl/workspace@$NX_VERSION --prefer-offline
+yarn --version
+yarn add --dev @nrwl/workspace@$NX_VERSION --cached
 
 # Run the affected command, comparing latest commit to the one before that
 npx nx affected:apps --plain --base HEAD~1 --head HEAD | grep $APP -q

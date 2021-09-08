@@ -1,0 +1,24 @@
+name: GraphhCDN
+on:
+  push:
+    branches:
+      - main
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          check-latest: true
+
+      - name: Pull
+        run: npx graphcdn pull --service fsaero
+        env:
+            GRAPHCDN_TOKEN: ${{ secrets.GRAPHCDN_TOKEN }}
+
+      - name: Push schema
+        run: npx graphcdn push schema
+        env:
+          GRAPHCDN_TOKEN: ${{ secrets.GRAPHCDN_TOKEN }}

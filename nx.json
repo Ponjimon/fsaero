@@ -1,5 +1,5 @@
 {
-  "npmScope": "@ponjimon/fsaero",
+  "npmScope": "fsaero",
   "affected": {
     "defaultBase": "main"
   },
@@ -27,13 +27,19 @@
     ]
   },
   "projects": {
+    "api": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
+    },
     "fsaero": {
       "tags": []
     },
-    "fsaero-ui": {
+    "fsairlines-gql": {
       "tags": []
     },
-    "fsairlines-gql": {
+    "gql-relay": {
       "tags": []
     },
     "ui": {
