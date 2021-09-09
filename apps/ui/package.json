@@ -5,9 +5,9 @@
     "@chakra-ui/react": "^1.6.7",
     "@emotion/react": "11.4.1",
     "@emotion/styled": "11.3.0",
-    "framer-motion": "^4",
-    "node-fetch": "^3.0.0",
-    "react-hook-form": "^7.14.2",
-    "use-http": "^1.0.24"
+    "framer-motion": "4.1.17",
+    "node-fetch": "3.0.0",
+    "react-hook-form": "7.15.2",
+    "use-http": "1.0.24"
   }
 }
