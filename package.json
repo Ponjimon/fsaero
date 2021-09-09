@@ -55,7 +55,7 @@
     "@nrwl/web": "12.8.0",
     "@nrwl/workspace": "12.8.0",
     "@testing-library/react": "11.2.7",
-    "@testing-library/react-hooks": "7.0.1",
+    "@testing-library/react-hooks": "7.0.2",
     "@types/jest": "27.0.1",
     "@types/node": "16.7.10",
     "@types/react": "17.0.3",
