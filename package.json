@@ -23,7 +23,7 @@
     "class-validator": "0.13.1",
     "core-js": "3.17.3",
     "framer-motion": "4.1.17",
-    "graphql": "15.5.2",
+    "graphql": "15.5.3",
     "graphql-relay": "0.8.0",
     "nestjs-relay": "4.0.4",
     "next": "11.1.2",
