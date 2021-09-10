@@ -11,6 +11,8 @@ env:
 
 jobs:
   deploy:
+    environment:
+      name: API Dev
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
