@@ -12,8 +12,9 @@ npx nx affected:apps --plain --base HEAD~1 --head HEAD | grep $APP -q
 
 # Store result of the previous command (grep)
 IS_AFFECTED=$?
+REGEX="^(renovate//*)"
 
-if [ "${IS_AFFECTED}" -eq 1 ] || [[ "${VERCEL_GIT_COMMIT_REF}" =~ /^renovate/ ]]; then
+if [ "${IS_AFFECTED}" -eq 1 ] || [[ $VERCEL_GIT_COMMIT_REF =~ $REGEX ]]; then
   echo "🛑 - Build cancelled"
   exit 0
 elif [ "${IS_AFFECTED}" -eq 0 ]; then
