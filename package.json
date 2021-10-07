@@ -37,7 +37,7 @@
     "rxjs": "7.4.0",
     "styled-components": "5.3.1",
     "tslib": "2.3.1",
-    "use-http": "1.0.24"
+    "use-http": "1.0.26"
   },
   "devDependencies": {
     "@nestjs/schematics": "8.0.3",

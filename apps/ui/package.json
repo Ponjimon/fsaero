@@ -8,6 +8,6 @@
     "framer-motion": "4.1.17",
     "node-fetch": "3.0.0",
     "react-hook-form": "7.17.1",
-    "use-http": "1.0.24"
+    "use-http": "1.0.26"
   }
 }
