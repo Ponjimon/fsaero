@@ -21,7 +21,7 @@
     "@nrwl/next": "12.10.0",
     "apollo-server-express": "3.4.0",
     "class-validator": "0.13.1",
-    "core-js": "3.18.2",
+    "core-js": "3.18.3",
     "framer-motion": "4.1.17",
     "graphql": "15.6.1",
     "graphql-relay": "0.9.0",
