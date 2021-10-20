@@ -1,6 +1,6 @@
 # --- Build container ---
 # Includes build tools required for native dependencies
-FROM node:16-alpine as builder
+FROM node:17-alpine as builder
 
 WORKDIR /app
 
@@ -13,7 +13,7 @@ COPY . ./
 RUN yarn nx build api --prod
 
 # --- Run container ---
-FROM node:16-alpine
+FROM node:17-alpine
 
 WORKDIR /app
 
