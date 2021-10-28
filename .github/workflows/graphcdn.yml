@@ -16,9 +16,9 @@ jobs:
       - name: Pull
         run: npx graphcdn pull --service fsaero
         env:
-            GRAPHCDN_TOKEN: ${{ secrets.GRAPHCDN_TOKEN }}
+          GRAPHCDN_TOKEN: ${{ secrets.GRAPHCDN_TOKEN }}
 
       - name: Push schema
-        run: npx graphcdn push schema
+        run: npx graphcdn push
         env:
           GRAPHCDN_TOKEN: ${{ secrets.GRAPHCDN_TOKEN }}
