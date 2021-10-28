@@ -26,28 +26,21 @@
       }
     ]
   },
-  "projects": {
-    "api": {
-      "tags": []
+  "cli": {
+    "defaultCollection": "@nrwl/nest"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
     },
-    "core": {
-      "tags": []
-    },
-    "fsaero": {
-      "tags": []
-    },
-    "fsairlines-gql": {
-      "tags": []
-    },
-    "gql-relay": {
-      "tags": []
-    },
-    "ui": {
-      "tags": []
-    },
-    "ui-e2e": {
-      "tags": [],
-      "implicitDependencies": ["ui"]
+    "@nrwl/next": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
     }
-  }
+  },
+  "defaultProject": "fsaero"
 }

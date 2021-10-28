@@ -43,7 +43,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "core": {
       "root": "libs/core",
@@ -64,7 +65,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "fsaero": {
       "root": "apps/fsaero",
@@ -114,7 +116,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "fsairlines-gql": {
       "root": "libs/fsairlines-gql",
@@ -135,7 +138,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "gql-relay": {
       "root": "libs/gql-relay",
@@ -156,7 +160,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "ui": {
       "root": "apps/ui",
@@ -207,7 +212,8 @@
             "lintFilePatterns": ["apps/ui/**/*.{ts,tsx,js,jsx}"]
           }
         }
-      }
+      },
+      "tags": []
     },
     "ui-e2e": {
       "root": "apps/ui-e2e",
@@ -233,24 +239,9 @@
             "lintFilePatterns": ["apps/ui-e2e/**/*.{js,ts}"]
           }
         }
-      }
-    }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/nest"
-  },
-  "defaultProject": "fsaero",
-  "generators": {
-    "@nrwl/react": {
-      "application": {
-        "babel": true
-      }
-    },
-    "@nrwl/next": {
-      "application": {
-        "style": "styled-components",
-        "linter": "eslint"
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["ui"]
     }
   }
 }
