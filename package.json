@@ -40,7 +40,7 @@
     "use-http": "1.0.26"
   },
   "devDependencies": {
-    "@nestjs/schematics": "8.0.4",
+    "@nestjs/schematics": "8.0.5",
     "@nestjs/testing": "8.2.0",
     "@nrwl/cli": "13.1.4",
     "@nrwl/cypress": "13.1.4",
